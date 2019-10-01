@@ -1,0 +1,23 @@
+{
+  "name": "node_version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "browser-sync": "browser-sync start --proxy 'localhost:3000' --files 'public/stylesheets/style.css',views/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "after-load": "^1.0.4",
+    "download-file": "^0.1.5",
+    "express": "^4.17.1",
+    "html-template-tag": "^3.2.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.2",
+    "path": "^0.12.7",
+    "puppeteer": "^1.20.0",
+    "remote-file-size": "^3.0.5"
+  }
+}

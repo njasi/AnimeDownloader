@@ -1,0 +1,29 @@
+body{
+  margin: 0;
+  background-color: #1b1b1b;
+}
+.navbar{
+  background-color: #2C2C32
+}
+.content{
+  margin: 0 5vw 0 5vw;
+}
+pre{
+  /* background-color:#EFF0F1; */
+  background-color: black;
+  color: green;
+  /* margin: 0 5vw 0 5vw; */
+  padding: .5em;
+  white-space: pre-wrap;
+  overflow-wrap: break-word
+}
+
+#error{
+  width:100%
+}
+
+.overlay{
+  width:100%;
+  height: auto;
+  z-index: -10;
+}

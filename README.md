@@ -28,9 +28,9 @@
 
 # Sites:
   ### Gogoanime.io / Gogoanimes.tv
-  todo: decide on final format of data
+  TODO: decide on final format of data
   ### Animefreak.tv:
-  use the network interception thing i did for gogo or use the original approach and look in that one badly programmed script tag that have
+  Wse the network interception thing I did for gogo or use the original approach and look in that one badly programmed script tag that they have for whatever reason.
 
   **Todo**
   1. Search
@@ -39,6 +39,14 @@
   1. getEpisodeLinks
   1. getDownloadLink
   ### Kissanime.ru
+
+  **Todo**
+  1. Search
+  1. getSeries
+  1. getSeriesEpisodes
+  1. getEpisodeLinks
+  1. *getDownloadLink* (no way to download from here can only use getEpisodeLinks)
+
   Kissanime has this think that checks if you are a bot or not by matching images to descriptions (not an actual captcha though)
   - seems like it can only be used to online viewing atm
   - getting past the verification

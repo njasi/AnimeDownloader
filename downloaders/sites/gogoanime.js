@@ -169,12 +169,6 @@ const gogoanime = {
         }
         return source
     }
-  },
-  downloadSeries:function(series, start = null, end = null, quality = 1){
-    // todo
-  },
-  downloadEpisode:function(episode){
-    // todo
   }
 }
 

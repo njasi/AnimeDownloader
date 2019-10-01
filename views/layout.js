@@ -3,6 +3,7 @@ const html = require("html-template-tag");
 module.exports = (content) => html`<!DOCTYPE html>
   <html lang="en">
     <head>
+      <meta charset="utf-8">
       <title>Anime Downloader</title>
       <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     </head>

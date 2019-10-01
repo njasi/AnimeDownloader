@@ -43,7 +43,9 @@ app.listen(PORT,() => {
 
 // const gogoanime = require("./downloaders/sites/gogoanime")
 // const test = async ()=>{
-
+//   console.log("waiting")
+//   console.log(await gogoanime.search("naruto"))
+//   console.log("done")
 // }
 // test();
 // // require("./downloaders/test")

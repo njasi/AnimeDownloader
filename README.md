@@ -71,4 +71,6 @@
       - resume watching feature
 
 ## How I should deal with it:
-oof
+These are both very closely related, but the watching progress is more like a permanent track of how much of an anime youve watched while recently watched will only include the shows that you have recently watched and at what point you were watching when you left off idrk its confusing because it could all be in one file but that'd probably be bad.
+1. Watching Progress
+1. Recently Watched

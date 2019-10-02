@@ -63,14 +63,48 @@
 1. What shows you are watching and how far you are.
     - storage options:
       - [myanimelist](https://myanimelist.net/) integration?
+        - only need the username to check your watch-list
+        - but it shoiuld be possible to update someone's information with puppeteer
       - Local tracking (a json file somewhere - easier but eh)
     - will allow suggestion of shows when a new ep is uploaded
 1. Recently watched shows
     - ie use to continue "binge"
     - save time you stopped watching?
-      - resume watching feature
+      - resume watching feature on homepage
 
 ## How I should deal with it:
 These are both very closely related, but the watching progress is more like a permanent track of how much of an anime youve watched while recently watched will only include the shows that you have recently watched and at what point you were watching when you left off idrk its confusing because it could all be in one file but that'd probably be bad.
 1. Watching Progress
+    - myanimelist
+      - make an "api" to get data
+    - json
+      -
 1. Recently Watched
+
+maybe i should use both for the watching progress because we have to account for offline mode.
+
+
+# Making things look not shit
+
+## react.js
+should use a fair bit of react to make the page interactive
+things that will need react:
+
+- Use for most of the times when we have to load in data? os ajax just as good for those fetch waits.
+
+1. The list of currently watched and recently watched
+1. Searches
+    - Load in searches using react
+    - allow the series to be clicked for more information (like a popup of viewscreen not a new route)
+    -
+1. Video server changing could use react
+
+
+# General Styling:
+## Colors:
+https://coolors.co/0b0c10-1f2833-c5c6c7-66fcf1-45a29e
+- #0B0C10
+- #1F2833
+- #C5C6C7
+- #66FCF1
+- #45A29E

@@ -11,7 +11,8 @@
         - do not include resume watching entries?
       - big buttons/links to
   - About:
-  - How to use
+    - How to use
+  - Page to configure anime connections ie what anime is the same anime on a diferent site and integrate with mal stuff
 
 
 ## Site structure:
@@ -25,6 +26,17 @@
       - make download viewer page
     - make search page
       - make download search page
+## Routers:
+- Api routes for each site
+  - ie "api/gogoanime" "api/animefreak")
+- have a currentlywatching route that references the json file that houses everything instead of somthing site specific
+
+
+### Functions on the routers:
+  - watching
+    - get the shows you're watching
+  - new
+    - get any shows in the user's list that have a new episode on that site
 
 # Sites:
   ### Gogoanime.io / Gogoanimes.tv
@@ -99,12 +111,19 @@ things that will need react:
     -
 1. Video server changing could use react
 
+## Don't forget:
+- prop key for .map additions
 
 # General Styling:
 ## Colors:
-https://coolors.co/0b0c10-1f2833-c5c6c7-66fcf1-45a29e
+[coolors.co](https://coolors.co/0b0c10-1f2833-c5c6c7-66fcf1-45a29e)
 - #0B0C10
 - #1F2833
 - #C5C6C7
 - #66FCF1
 - #45A29E
+
+
+## Things to remember:
+- nth-child(2)
+  - make video lists alternating colors

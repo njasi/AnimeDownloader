@@ -106,9 +106,9 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/i
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _series = __webpack_require__(/*! ./series.js */ "./client/series.js");
+var _seriesList = __webpack_require__(/*! ./seriesList.js */ "./client/seriesList.js");
 
-var _series2 = _interopRequireDefault(_series);
+var _seriesList2 = _interopRequireDefault(_seriesList);
 
 var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
@@ -137,11 +137,13 @@ var Search = function (_React$Component) {
     _this.state = {
       series: [],
       selectedServer: servers[0],
-      term: "naruto"
+      term: "",
+      searching: false
     };
 
     _this.render = _this.render.bind(_this);
     _this.getSeries = _this.getSeries.bind(_this);
+    _this.toggleView = _this.toggleView.bind(_this);
     return _this;
   }
 
@@ -154,18 +156,26 @@ var Search = function (_React$Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                this.setState({
+                  searching: true,
+                  series: []
+                });
+                _context.next = 3;
                 return _axios2.default.get('/api/' + this.state.selectedServer + '/search?term=' + this.state.term);
 
-              case 2:
+              case 3:
                 response = _context.sent;
                 series = response.data;
 
+                if (series.length === 0) {
+                  series = null;
+                }
                 this.setState({
+                  searching: false,
                   series: series
                 });
 
-              case 5:
+              case 7:
               case 'end':
                 return _context.stop();
             }
@@ -183,6 +193,36 @@ var Search = function (_React$Component) {
     key: 'setServer',
     value: function setServer() {
       this.setState();
+    }
+  }, {
+    key: 'toggleView',
+    value: function toggleView() {
+      if (this.state.searching) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'searching' },
+          _react2.default.createElement(
+            'h2',
+            { id: 'status' },
+            'Searching'
+          ),
+          _react2.default.createElement('div', { className: 'loadingIcon' })
+        );
+      } else if (this.state.series === null) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'searching' },
+          _react2.default.createElement(
+            'h2',
+            { id: 'status' },
+            'There were no results for "',
+            this.state.term,
+            '"'
+          )
+        );
+      } else {
+        return _react2.default.createElement(_seriesList2.default, { series: this.state.series });
+      }
     }
   }, {
     key: 'render',
@@ -229,13 +269,7 @@ var Search = function (_React$Component) {
             }() }),
           _react2.default.createElement('input', { id: 'search-button', type: 'submit' })
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'series-container' },
-          this.state.series.map(function (series) {
-            return _react2.default.createElement(_series2.default, { series: series });
-          })
-        )
+        this.toggleView()
       );
     }
   }]);
@@ -269,7 +303,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Series = function Series(props) {
   var styling = {
-    "background-image": 'url(' + props.series.icon + ')'
+    "backgroundImage": 'url(' + props.series.icon + ')'
   };
 
   return _react2.default.createElement(
@@ -302,6 +336,43 @@ exports.default = Series;
 
 
 {/* <img src={props.series.icon} /> */}
+
+/***/ }),
+
+/***/ "./client/seriesList.js":
+/*!******************************!*\
+  !*** ./client/seriesList.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _series = __webpack_require__(/*! ./series.js */ "./client/series.js");
+
+var _series2 = _interopRequireDefault(_series);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SeriesList = function SeriesList(props) {
+  return _react2.default.createElement(
+    'div',
+    { className: 'series-container' },
+    props.series.map(function (series) {
+      return _react2.default.createElement(_series2.default, { key: series.title, series: series });
+    })
+  );
+};
+exports.default = SeriesList;
 
 /***/ }),
 

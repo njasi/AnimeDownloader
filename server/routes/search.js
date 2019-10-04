@@ -7,6 +7,9 @@ router.use(express.static(path.join(__dirname, "../../public")));
 
 router.get("/",(req,res,next)=>{
   try{
+    if(req.query.term){
+      
+    }
     res.send(layout('','/react/seriesList.js',true))
   }catch(err){next(err)}
 });

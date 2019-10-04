@@ -2,7 +2,7 @@ import React from 'react'
 
 const Series = (props) => {
   const styling = {
-    "background-image": `url(${props.series.icon})`
+    "backgroundImage": `url(${props.series.icon})`
   }
 
   return (

@@ -9,7 +9,10 @@ router.get("/:site/search", async (req,res,next)=>{
       res.json(await Gogoanime.search(req.query.term))
     }
     console.log("DONE")
-  }catch(err){next(err)}
+  }catch(err){
+    console.log("ERR")
+    next(err)
+  }
 });
 
 router.get("/:slug",(req,res,next)=>{

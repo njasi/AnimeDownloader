@@ -20,7 +20,7 @@ module.exports = (content,reactScript,hideNavSearch) => html`<!DOCTYPE html>
               <div class = "navbar-links-holder">
                 <ul class = "navbar-links">
                   <li class = "navbar-link-holder">
-                    <a class = "navbar-link " href = "#">Home</a>
+                    <a class = "navbar-link " href = "/">Home</a>
                   </li>
                   <li class = "navbar-link-holder">
                     <a class = "navbar-link" href = "#">Downloaded</a>
@@ -38,8 +38,8 @@ module.exports = (content,reactScript,hideNavSearch) => html`<!DOCTYPE html>
               </div>
               $${hideNavSearch?"":html`
               <div class = "search-holder">
-                <form>
-                  <input id = "search-bar" type="search" placeholder="Search" aria-label="Search">
+                <form action = "/search">
+                  <input id = "search-bar" type="search" name = "term" placeholder="Search...">
                   <button id = "search-button" type="submit">Search</button>
                 </form>
               </div>`}

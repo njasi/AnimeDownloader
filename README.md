@@ -9,7 +9,7 @@
       - updated anime you're watching
         - new episode is listed somewhere then it will show up here
         - do not include resume watching entries?
-      - big buttons/links to
+      - big buttons/links to things?
   - About:
     - How to use
   - Page to configure anime connections ie what anime is the same anime on a diferent site and integrate with mal stuff
@@ -31,6 +31,12 @@
   - ie "api/gogoanime" "api/animefreak")
 - have a currentlywatching route that references the json file that houses everything instead of somthing site specific
 
+## /watch?episode={ep_url}
+- ep_url = yu_yu_hakusho, naruto etc will be parsed from the site and it will check the relations object in the series json
+  - will check your json file for if you have any series listed as this
+    - will always download in a folder that is the key name
+    - json: {yu_yu_hakusho: {gogoanime:yu-yu-hakusho, current-episode:69,}}
+
 
 ### Functions on the routers:
   - watching
@@ -42,7 +48,7 @@
   ### Gogoanime.io / Gogoanimes.tv
   TODO: decide on final format of data
   ### Animefreak.tv:
-  Wse the network interception thing I did for gogo or use the original approach and look in that one badly programmed script tag that they have for whatever reason.
+  Use the network interception thing I did for gogo or use the original approach and look in that one badly programmed script tag that they have for whatever reason.
 
   **Todo**
   1. Search

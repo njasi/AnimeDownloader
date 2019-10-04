@@ -1,0 +1,28 @@
+{
+  "yu_yu_hakusho": {
+    "relations":{
+      "gogoanime":"yu-yu-hakusho",
+      "animelist":882
+    },
+    "status":{
+      "current_ep":69
+    },
+    "downloaded":{
+      "up_to":100
+    }
+  },
+  "naruto":{ "is always the name of the floder downloads goto":"oof",
+    "relations" :{
+      "gogoanime":"naruto",
+      "animelist":20
+    },
+    "status":{
+      "current_ep":410,
+      "time":0, "seconds into the video":"if they started watching before"
+    },
+    "downloaded":{ "only comes up if the series has been downloaded":"so you can just check with ?series.downloaded",
+      "up_to":420,
+      "image":"always saves as art.png. (so public/downloaded/series/art.png)"
+    }
+  }
+}

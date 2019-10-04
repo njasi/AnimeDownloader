@@ -1,7 +1,7 @@
 
 /*#!/usr/bin/env node --no-warnings*/
 const remote = require('remote-file-size')
-const {access, F_OK} = require('fs')
+const fs = require('fs')
 /**
  * gets the size of the file at the specified url (async)
  * @param {string} url    the file you want to check
@@ -20,10 +20,12 @@ const fileSize = (url) => {
  */
 function checkFileExists(path){
   return new Promise((resolve, reject) => {
-    access(path, F_OK, error => {
+    fs.access(path, fs.F_OK, error => {
       resolve(!error);
     });
   });
 }
+
+function
 
 module.exports = {checkFileExists,fileSize};

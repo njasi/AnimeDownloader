@@ -70,10 +70,10 @@ const gogoanime = {
     return temp;
   },
 
-  getSeriesEpisodes: async function(series){
+  getSeriesEpisodes: async function(seriesUrl, seriesTitle){
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto(series.url);
+    await page.goto(seriesUrl);
 
     const stuff = await page.evaluate(() => {
       const oof = async function(){
@@ -94,13 +94,15 @@ const gogoanime = {
       }
       return oof();
     })
-    // console.log(stuff);
 
     // TODO: stuff
     await browser.close();
-    return stuff.map(ep=>{
-      return new Episode(ep.num,ep.url,series.title);
+    let episodes = stuff.map(ep=>{
+      return new Episode(ep.num,ep.url,seriesTitle);
     })
+
+    episodes.sort((a,b)=>(a.number[0]>b.number[0])?1:-1)
+    return episodes;
   },
   getEpisodeLinks: async function(episodeURL){
     const browser = await puppeteer.launch();

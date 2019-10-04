@@ -1,12 +1,13 @@
 // the wrapper layout navbar and footer and stuff
 const html = require("html-template-tag");
 
-module.exports = (content) => html`<!DOCTYPE html>
+module.exports = (content,reactScript,hideNavSearch) => html`<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="utf-8">
       <title>Anime Downloader</title>
       <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+      $${reactScript? html`<script src = ${reactScript} defer></script>`:""}
     </head>
     <body>
       <div class="wrapper-wrapper">
@@ -35,14 +36,16 @@ module.exports = (content) => html`<!DOCTYPE html>
                   </li>
                 </ul>
               </div>
+              $${hideNavSearch?"":html`
               <div class = "search-holder">
                 <form>
                   <input id = "search-bar" type="search" placeholder="Search" aria-label="Search">
                   <button id = "search-button" type="submit">Search</button>
                 </form>
-              </div>
+              </div>`}
             </div>
             <div class = "content">
+              $${reactScript? html`<div id = app></div>`:""}
               $${content}
             </div>
             <div id="footer">

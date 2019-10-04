@@ -4,5 +4,5 @@
  */
 
 module.exports = {
-  Gogoanime: require("gogoanime")
+  Gogoanime: require("./gogoanime")
 }

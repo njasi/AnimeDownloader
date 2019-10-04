@@ -110,3 +110,42 @@ pre{
   white-space: pre-wrap;
   overflow-wrap: break-word
 }
+
+/*
+SEEARCH PAGE
+*/
+.series-container{
+  display:flex;
+  flex-wrap: wrap;
+}
+.series{
+  margin: 6px;
+  width: calc(20% - 12px);
+  height: 300px;
+  outline: #45A29E solid 2px;
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+  background-position: center top;
+}
+.series:hover{
+  outline: #0B0C10 solid 2px;
+}
+.series a{
+  text-decoration: none;
+  color: #45A29E;
+}
+.series:hover a{
+  color: #66FCF1;
+}
+.series img{
+  width:100%;
+  height:auto;
+  object-fit: cover;
+}
+#search-input{
+  width:100%;
+}
+#search-button{
+  position:relative;
+}

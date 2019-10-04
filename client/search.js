@@ -1,38 +1,53 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import Series from './series.js'
 import Axios from "axios"
 
 const servers = ['gogoanime.se','gogoanimes.tv','animefreak']
 
-export default class Search extends React.Component {
+class Search extends React.Component {
   constructor(){
     super()
 
     this.state = {
       series: [],
-      selectedServer: 'GOGOANIME.SE'
+      selectedServer: servers[0],
+      term:"naruto"
     }
 
     this.render = this.render.bind(this)
+    this.getSeries = this.getSeries.bind(this)
   }
 
-  async componentDidMount(){
-    let data = await Axios.get("/api/{}/search");
-    let series = data.data;
+  async getSeries(){
+    let response = await Axios.get(`/api/${this.state.selectedServer}/search?term=${this.state.term}`);
+    let series = response.data;
     this.setState({
       series:series
     })
-    console.log(series)
   }
 
   setServer(){
-    this.state.update
+    this.setState()
   }
 
   render () {
     return (
       <div id='main'>
-        <div class='container'>
+        <div className = "search-bar-wide">
+          <input id = "search-input" type = "text" placeholder = "search..." onKeyDown = {async (event)=>{
+            if (event.keyCode === 13) {
+              event.preventDefault();
+              await this.setState({
+                term:document.getElementById("search-input").value
+              });
+              this.getSeries()
+            }
+          }
+          }/>
+          <input id = "search-button" type = "submit"/>
+        </div>
+        <div className='series-container'>
           {
             this.state.series.map((series)=>{
               return (<Series series = {series}/>);
@@ -44,10 +59,7 @@ export default class Search extends React.Component {
   }
 }
 
-
-
-{/* <div id='albums' class='row wrap'>
-{this.state.albums.map(album=>{
-  return (<Album artistName = {album.artist.name} albumName = {album.name} imageUrl = {album.artworkUrl}/>)
-})}
-</div> */}
+ReactDOM.render(
+  <Search />,
+  document.getElementById('app')
+)

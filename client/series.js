@@ -1,25 +1,27 @@
 import React from 'react'
 
 const Series = (props) => {
+  const styling = {
+    "background-image": `url(${props.series.icon})`
+  }
 
   return (
-    <div class='series'>
+    <div style = {styling} className='series'>
       {
         props.type == "configure" ? (
-          <div class = "configure">
-            <a class = "configure-refuse"></a>
-            <a class = "configure-accept"></a>
+          <div className = "configure">
+            <a className = "configure-refuse"></a>
+            <a className = "configure-accept"></a>
           </div>
         ): ""
       }
       <a href = {props.href?props.href:""} onClick = {props.action?props.action:()=>{}}>
-        <img src={props.series.image} />
         <p>{props.series.title}</p>
         {
           props.type == "episode_notification" ? (
-          <small>{`Episode ${props.ep_num}`}</small>
-          ):""
-        }
+            <small>{`Episode ${props.ep_num}`}</small>
+            ):""
+          }
       </a>
 
     </div>
@@ -28,3 +30,5 @@ const Series = (props) => {
 
 export default Series;
 
+
+{/* <img src={props.series.icon} /> */}

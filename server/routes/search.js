@@ -7,7 +7,7 @@ router.use(express.static(path.join(__dirname, "../../public")));
 
 router.get("/",(req,res,next)=>{
   try{
-    res.send(layout('','react/search.js',true)) //send react script that i want to interact with the app id and remove the navbar search becuase this page is one gian
+    res.send(layout('','/react/seriesList.js',true))
   }catch(err){next(err)}
 });
 

@@ -10,6 +10,7 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "../public"))); // give access to files
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/api",require("./routes/api"));
 app.use("/search",require("./routes/search"));
 
 app.get("/",(req,res,next)=>{

@@ -5,6 +5,7 @@ GENERAL PAGE LAYOUT STUFF
 body{
   margin: 0;
   background-color: #0B0C10;
+  /* background-image: url("../cannotFind.png"); */
   color:#C5C6C7;
   font-family: sans-serif
 }
@@ -119,24 +120,27 @@ SEEARCH PAGE
   flex-wrap: wrap;
 }
 .series{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin: 6px;
   width: calc(20% - 12px);
   height: 300px;
-  outline: #45A29E solid 2px;
   background-clip: border-box;
   background-repeat: no-repeat;
   background-size: auto 80%;
   background-position: center top;
 }
-.series:hover{
-  outline: #0B0C10 solid 2px;
-}
 .series a{
   text-decoration: none;
+  background-color: #1F2833;
   color: #45A29E;
+  padding:5px 0;
+  text-align: center;
 }
 .series:hover a{
   color: #66FCF1;
+  outline: 2px solid #66FCF1; /* make a thicker underline*/
 }
 .series img{
   width:100%;

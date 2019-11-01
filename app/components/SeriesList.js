@@ -1,9 +1,9 @@
 import React from 'react'
-import Series from './series.js'
+import Series from './Series'
 
 const SeriesList = (props)=>{
   return(
-    <div className='series-container'>
+    <div className='series-container wrap'>
     {
       props.series.map((series)=>{
         return (<Series key = {series.title} series = {series}/>);

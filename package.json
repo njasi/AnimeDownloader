@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "html-template-tag": "^3.2.0",
     "jikan-node": "^1.2.0",
+    "markdown-it": "^10.0.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.2",
     "path": "^0.12.7",
@@ -25,7 +26,14 @@
     "query-string": "^6.8.3",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "remote-file-size": "^3.0.5"
+    "react-html-parser": "^2.0.2",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "remote-file-size": "^3.0.5",
+    "tls": "0.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

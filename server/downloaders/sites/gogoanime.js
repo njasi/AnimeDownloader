@@ -104,6 +104,7 @@ const gogoanime = {
     episodes.sort((a,b)=>(a.number[0]>b.number[0])?1:-1)
     return episodes;
   },
+
   getEpisodeLinks: async function(episodeURL){
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

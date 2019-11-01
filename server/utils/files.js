@@ -26,6 +26,7 @@ function checkFileExists(path){
   });
 }
 
+
 // function
 
 module.exports = {checkFileExists,fileSize};

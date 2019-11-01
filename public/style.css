@@ -99,12 +99,12 @@ SEARCH BAR FORMATTING (the nav bar and the search page etc...)
 .search-bar.nav{
   align-self: center;
 }
-.search-bar form,.search-bar{
+.search-bar form{
   background-color: #0B0C10;
   outline: #45A29E solid 1px
 }
 .search-bar input, .search-bar button{
-  background-color:rgba(0, 0, 0, 0);
+  background-color:#0B0C10;
   color:white;
   border: none;
   outline:none;
@@ -112,14 +112,17 @@ SEARCH BAR FORMATTING (the nav bar and the search page etc...)
   color: #45A29E;
   font-size: 14px;
 }
+
 .wide-bar{
   /* display: flex; */
   width:50%;
   align-self: center;
   margin-bottom: 20px;
 }
+
 .wide-bar > #search-input{
   font-size: 32px;
+  width: 100%;
 }
 .wide-bar > #search-button{
   font-size: 20px;

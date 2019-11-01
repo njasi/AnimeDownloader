@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Search from "./Search"
 
 export const Navbar = props => {
   return (
@@ -65,6 +66,7 @@ export const Navbar = props => {
           </li>
         </ul>
       </div>
+      <Search size = {"small"} history = {props.history}/>
     </div>
   );
 };

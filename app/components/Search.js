@@ -1,63 +1,69 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import SeriesList from './SeriesList'
-import Axios from "axios"
-import { connect } from 'react-redux'
+import React from "react";
+import ReactDOM from "react-dom";
+import SeriesList from "./SeriesList";
+import Axios from "axios";
+import { connect } from "react-redux";
 
-const servers = ['gogoanime.se','gogoanimes.tv','animefreak']
+const servers = ["gogoanime.se", "gogoanimes.tv", "animefreak"];
 
 class Search extends React.Component {
-  constructor(props){
-    super()
+  constructor(props) {
+    super();
 
-    this.state = {
-      series: [],
-      selectedServer: servers[0],
-      term:props.term,
-      searching: false,
-    }
-
-    this.render = this.render.bind(this)
-    this.getSeries = this.getSeries.bind(this)
-    this.toggleView = this.toggleView.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
-  componentDidMount(){
-    if(this.state.term){
-      this.getSeries()
-      document.getElementById("search-input").value = this.state.term
+  componentDidMount() {}
+
+  handleSearch(event) {
+    event.preventDefault();
+    if (document.getElementById("search-input").value != "") {
+      this.props.getSeries();
+      this.props.history.push("/search")
     }
   }
 
-
-  handleSearch(event){
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        if(document.getElementById("search-input").value != ''){
-          this.getSeries();
-        }
-      }
-  }
-
-  render () {
+  render() {
     return (
-      <div id='main'>
-        <div className = "search-bar wide-bar">
-          <form onSubmit = {this.handleSearch}>
-            <input id = "search-input" name = "term" type = "text" placeholder = "search..." />
-          </form>
-        </div>
-        {this.toggleView()}
+      <div
+        className={
+          this.props.smallBar ? "search-bar nav" : "search-bar wide-bar"
+        }
+      >
+        <form onSubmit={this.handleSearch} autoComplete="off">
+          <input
+            // className = "search-bar"
+            id="search-input"
+            name="term"
+            type="text"
+            placeholder="search..."
+          />
+          {this.props.smallBar ? (
+            <button id="search-button" type="submit">
+              Search
+            </button>
+          ) : (
+            ""
+          )}
+        </form>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state)=> {
-  return ({
+const mapStateToProps = (state, ownProps) => {
+  return {
+    smallBar: ownProps.size ? ownProps.size == "small" : false,
+  };
+};
 
-  })
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    getSeries: term => dispatch({ type: "NONE" })
+  };
+};
 
-export default connect(mapStateToProps)(Search)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);

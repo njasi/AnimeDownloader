@@ -123,9 +123,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = exports.Home = function Home(props) {
   return _react2.default.createElement(
-    "h1",
+    "div",
     null,
-    "Welcome"
+    _react2.default.createElement(
+      "h1",
+      null,
+      "Welcome"
+    ),
+    _react2.default.createElement(
+      "h3",
+      null,
+      "Filler Text:"
+    ),
+    _react2.default.createElement(
+      "p",
+      null,
+      "Gerturde (also spelled Gerturd) is a female given name which is derived from Germanic roots that meant \"spear\" and \"strength\". \"Turdy\", originally a diminutive of \"Gerturde,\" has developed into a name in its own right. In German-speaking countries, Gertraud (pronounced Ger-trowd) is a familiar variation of the name. \"Gartred\" is a rare variation (attested in Daphne du Maurier's novel The King's General, set in 17th Century Cornwall.[1][2]"
+    )
   );
 };
 
@@ -159,6 +173,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+var _Search = __webpack_require__(/*! ./Search */ "./app/components/Search.js");
+
+var _Search2 = _interopRequireDefault(_Search);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -252,7 +270,8 @@ var Navbar = exports.Navbar = function Navbar(props) {
           )
         )
       )
-    )
+    ),
+    _react2.default.createElement(_Search2.default, { size: "small", history: props.history })
   );
 };
 // If i ever need to connect to the state
@@ -302,7 +321,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var servers = ['gogoanime.se', 'gogoanimes.tv', 'animefreak'];
+var servers = ["gogoanime.se", "gogoanimes.tv", "animefreak"];
 
 var Search = function (_React$Component) {
   _inherits(Search, _React$Component);
@@ -312,54 +331,46 @@ var Search = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
-    _this.state = {
-      series: [],
-      selectedServer: servers[0],
-      term: props.term,
-      searching: false
-    };
-
-    _this.render = _this.render.bind(_this);
-    _this.getSeries = _this.getSeries.bind(_this);
-    _this.toggleView = _this.toggleView.bind(_this);
     _this.handleSearch = _this.handleSearch.bind(_this);
     return _this;
   }
 
   _createClass(Search, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      if (this.state.term) {
-        this.getSeries();
-        document.getElementById("search-input").value = this.state.term;
-      }
-    }
+    key: "componentDidMount",
+    value: function componentDidMount() {}
   }, {
-    key: 'handleSearch',
+    key: "handleSearch",
     value: function handleSearch(event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        if (document.getElementById("search-input").value != '') {
-          this.getSeries();
-        }
+      event.preventDefault();
+      if (document.getElementById("search-input").value != "") {
+        this.props.getSeries();
+        this.props.history.push("/search");
       }
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { id: 'main' },
+        "div",
+        {
+          className: this.props.smallBar ? "search-bar nav" : "search-bar wide-bar"
+        },
         _react2.default.createElement(
-          'div',
-          { className: 'search-bar wide-bar' },
-          _react2.default.createElement(
-            'form',
-            { onSubmit: this.handleSearch },
-            _react2.default.createElement('input', { id: 'search-input', name: 'term', type: 'text', placeholder: 'search...' })
-          )
-        ),
-        this.toggleView()
+          "form",
+          { onSubmit: this.handleSearch, autoComplete: "off" },
+          _react2.default.createElement("input", {
+            // className = "search-bar"
+            id: "search-input",
+            name: "term",
+            type: "text",
+            placeholder: "search..."
+          }),
+          this.props.smallBar ? _react2.default.createElement(
+            "button",
+            { id: "search-button", type: "submit" },
+            "Search"
+          ) : ""
+        )
       );
     }
   }]);
@@ -367,11 +378,54 @@ var Search = function (_React$Component) {
   return Search;
 }(_react2.default.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {};
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    smallBar: ownProps.size ? ownProps.size == "small" : false
+  };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(Search);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getSeries: function getSeries(term) {
+      return dispatch({ type: "NONE" });
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Search);
+
+/***/ }),
+
+/***/ "./app/components/SearchResults.js":
+/*!*****************************************!*\
+  !*** ./app/components/SearchResults.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SearchResults = undefined;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Search = __webpack_require__(/*! ./Search */ "./app/components/Search.js");
+
+var _Search2 = _interopRequireDefault(_Search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SearchResults = exports.SearchResults = function SearchResults(props) {
+  return _react2.default.createElement(_Search2.default, null);
+};
+// If i ever need to connect to the state
+exports.default = SearchResults;
 
 /***/ }),
 
@@ -546,9 +600,9 @@ var _Series = __webpack_require__(/*! ./Series */ "./app/components/Series.js");
 
 var _Series2 = _interopRequireDefault(_Series);
 
-var _Search = __webpack_require__(/*! ./Search */ "./app/components/Search.js");
+var _SearchResults = __webpack_require__(/*! ./SearchResults */ "./app/components/SearchResults.js");
 
-var _Search2 = _interopRequireDefault(_Search);
+var _SearchResults2 = _interopRequireDefault(_SearchResults);
 
 var _Episode = __webpack_require__(/*! ./Episode */ "./app/components/Episode.js");
 
@@ -592,15 +646,16 @@ var Root = exports.Root = function (_React$Component) {
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         null,
-        _react2.default.createElement(_Navbar2.default, null),
+        _react2.default.createElement(_reactRouterDom.Route, { component: _Navbar2.default }),
         _react2.default.createElement(
-          "div",
-          { className: "content" },
+          _reactRouterDom.Switch,
+          null,
           _react2.default.createElement(
-            _reactRouterDom.Switch,
-            null,
+            "div",
+            { className: "content" },
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/about", component: _about3.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", component: _SearchResults2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { component: function component() {
                 return _react2.default.createElement(
                   "h1",

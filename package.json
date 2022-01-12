@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "html-template-tag": "^3.2.0",
     "jikan-node": "^1.2.0",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.2",
     "path": "^0.12.7",
